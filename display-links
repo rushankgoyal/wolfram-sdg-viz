@@ -1,0 +1,3 @@
+websites = {{Hyperlink["https://foodtank.com/news/2020/10/36-organizations-helping-solve-the-climate-crisis/"]}, {Hyperlink["https://foodtank.com/news/2020/10/36-organizations-helping-solve-the-climate-crisis/"]},{ Hyperlink["https://www.geogebra.org/classic?lang=en"]}}
+
+Grid[websites, Frame->All,Background->{None,{{Gray,White}}}]
