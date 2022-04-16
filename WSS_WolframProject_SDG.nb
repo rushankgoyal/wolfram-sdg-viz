@@ -1,0 +1,846 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframDesktop 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       161,          7]
+NotebookDataLength[     42226,        838]
+NotebookOptionsPosition[     39771,        793]
+NotebookOutlinePosition[     40218,        810]
+CellTagsIndexPosition[     40175,        807]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"printstate", "[", 
+   RowBox[{"state_", ",", "ratio_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"num", "=", "400"}], ",", 
+      RowBox[{"ratioInteger", " ", "=", " ", 
+       RowBox[{"IntegerPart", "[", "ratio", "]"}]}], ",", 
+      RowBox[{"ratioDecimal", " ", "=", " ", 
+       RowBox[{"FractionalPart", "[", "ratio", "]"}]}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"GraphicsRow", "@", 
+     RowBox[{"Join", "[", " ", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"With", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"place", " ", "=", 
+             RowBox[{
+              RowBox[{
+              "Interpreter", "[", "\"\<AdministrativeDivision\>\"", "]"}], 
+              "[", "state", "]"}]}], "}"}], ",", "\[IndentingNewLine]", " ", 
+           RowBox[{"GeoGraphics", "[", 
+            RowBox[{
+             RowBox[{"{", "\n", "   ", 
+              RowBox[{
+               RowBox[{"EdgeForm", "[", "Black", "]"}], ",", "\n", "   ", 
+               RowBox[{"GeoStyling", "[", 
+                RowBox[{"{", 
+                 RowBox[{"\"\<Image\>\"", ",", " ", 
+                  RowBox[{"place", "[", "\"\<Flag\>\"", "]"}]}], "}"}], "]"}],
+                ",", " ", "\n", "   ", 
+               RowBox[{"place", "[", "\"\<Polygon\>\"", "]"}]}], "\n", "   ", 
+              "}"}], ",", " ", 
+             RowBox[{"GeoBackground", " ", "\[Rule]", " ", "None"}]}], "\n", 
+            "  ", "]"}]}], "]"}], ",", "ratioInteger"}], "]"}], ",", 
+       RowBox[{"List", "@", 
+        RowBox[{"ImageCrop", "[", 
+         RowBox[{
+          RowBox[{"With", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"place", " ", "=", 
+              RowBox[{
+               RowBox[{
+               "Interpreter", "[", "\"\<AdministrativeDivision\>\"", "]"}], 
+               "[", "state", "]"}]}], "}"}], ",", "\n", " ", 
+            RowBox[{"GeoGraphics", "[", 
+             RowBox[{
+              RowBox[{"{", "\n", "   ", 
+               RowBox[{
+                RowBox[{"EdgeForm", "[", "Black", "]"}], ",", "\n", "   ", 
+                RowBox[{"GeoStyling", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"\"\<Image\>\"", ",", " ", 
+                   RowBox[{"place", "[", "\"\<Flag\>\"", "]"}]}], "}"}], 
+                 "]"}], ",", " ", "\n", "   ", 
+                RowBox[{"place", "[", "\"\<Polygon\>\"", "]"}]}], "\n", "   ",
+                "}"}], ",", " ", 
+              RowBox[{"GeoBackground", " ", "\[Rule]", " ", "None"}]}], "\n", 
+             "  ", "]"}]}], "\n", " ", "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"IntegerPart", "[", 
+             RowBox[{"ratioDecimal", "*", "num"}], "]"}], ",", "550"}], 
+           "}"}]}], "]"}]}]}], "]"}]}]}], "]"}]}]], "Input",
+ CellLabel->"In[73]:=",ExpressionUUID->"e9ae5a92-1f5d-4dfc-8028-c069f31bc842"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"database", "=", 
+   RowBox[{
+    RowBox[{"ResourceFunction", "[", "\"\<DatasetWithHeaders\>\"", "]"}], "[", 
+    RowBox[{
+    "Import", "[", 
+     "\"\<C:\\\\Users\\\\HP\\\\Downloads\\\\prevalence-of-undernourishment.\
+csv\>\"", "]"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.857976231022088*^9, 3.8579762469598265`*^9}, {
+   3.8579784344315405`*^9, 3.8579784376589746`*^9}, {3.8579785513267264`*^9, 
+   3.8579785565721517`*^9}, 3.858388388050294*^9},
+ CellLabel->"In[74]:=",ExpressionUUID->"6113ba8c-da82-4425-b454-284bdd480f8e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"templistcountries", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"database", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "1"}], "]"}], "]"}], "//", "DeleteDuplicates"}], "//",
+     "Normal"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.857976265861653*^9, 3.8579762838382425`*^9}, {
+   3.85797633883571*^9, 3.8579763413527813`*^9}, {3.8579765418241014`*^9, 
+   3.8579765791410065`*^9}, 3.857978080244271*^9, {3.857980937263693*^9, 
+   3.857980961243702*^9}, {3.8579809953328953`*^9, 3.8579809982918725`*^9}, 
+   3.85803595031398*^9, {3.8583894871374207`*^9, 3.8583894873957076`*^9}},
+ NumberMarks->False,
+ CellLabel->"In[75]:=",ExpressionUUID->"7b0cd337-2110-4a0b-a8ed-c3cf4e9eada3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"years", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ToString", "/@", 
+      RowBox[{"database", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", "3"}], "]"}], "]"}]}], "//", "DeleteDuplicates"}],
+     "//", "Normal"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8579766426362753`*^9, 3.8579766476846943`*^9}, {
+   3.85797725106079*^9, 3.8579772722786922`*^9}, 3.857978083726016*^9, {
+   3.8579791876921663`*^9, 3.8579791887748137`*^9}, {3.8579809465649033`*^9, 
+   3.8579810047236843`*^9}, 3.8580359534065576`*^9, {3.858167120531516*^9, 
+   3.8581671222792716`*^9}},
+ CellLabel->"In[43]:=",ExpressionUUID->"2f0231bf-e64d-4eb5-89a0-d557f55ba283"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"states", "=", 
+   RowBox[{"AlphabeticSort", "@", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Texas\>\"", ",", "\"\<Ohio\>\"", ",", " ", "\"\<California\>\"", 
+      ",", " ", "\"\<Rhode Island\>\"", ",", " ", "\"\<Wyoming\>\"", ",", 
+      " ", "\"\<Florida\>\"", ",", " ", "\"\<Oregon\>\"", ",", " ", 
+      "\"\<Maryland\>\"", ",", " ", "\"\<Virginia\>\"", ",", " ", 
+      "\"\<Colorado\>\""}], "}"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8581671243030806`*^9, 3.85816713791146*^9}, {
+  3.858167179606493*^9, 3.8581672901593657`*^9}},
+ CellLabel->"In[44]:=",ExpressionUUID->"c18e60a7-690a-45c9-9d30-7e1d1ec4db26"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"listcountries", "=", 
+   RowBox[{"Intersection", "[", 
+    RowBox[{"countrylist", ",", "templistcountries"}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.8583895032911577`*^9, 3.858389510853841*^9}},
+ CellLabel->"In[71]:=",ExpressionUUID->"df33f36b-bdcb-4ba0-be47-15dcc7ea3653"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GetPrevalence", "[", 
+   RowBox[{"c_", ",", "y_"}], "]"}], ":=", 
+  RowBox[{"Part", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"database", "[", 
+      RowBox[{
+       RowBox[{"Select", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"#country", "===", "c"}], ")"}], "&&", 
+          RowBox[{"(", 
+           RowBox[{"#year", "===", 
+            RowBox[{"ToExpression", "@", "y"}]}], ")"}]}], "&"}], "]"}], ",", 
+       "\"\<prevalence\>\""}], "]"}], "//", "Normal"}], ",", "1"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.857979192182432*^9, 3.8579792241041017`*^9}, {
+  3.857979350158899*^9, 3.8579793536597214`*^9}, {3.857979411117345*^9, 
+  3.857979417542283*^9}},
+ CellLabel->"In[45]:=",ExpressionUUID->"4f4990bc-2009-45d3-8255-3327d992582f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GetCountryHungerPop", "[", 
+   RowBox[{"countryname_", ",", "year_"}], "]"}], ":=", 
+  RowBox[{"IntegerPart", "@", 
+   RowBox[{"N", "@", 
+    RowBox[{"QuantityMagnitude", "[", 
+     RowBox[{
+      RowBox[{"CountryData", "[", 
+       RowBox[{"countryname", ",", "\"\<Population\>\""}], "]"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"GetPrevalence", "[", 
+         RowBox[{"countryname", ",", "year"}], "]"}], "/", "100"}], ")"}]}], 
+     "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.8583887981422663`*^9, 3.858388875750213*^9}, {
+  3.8583889173909087`*^9, 3.8583889223050337`*^9}},
+ CellLabel->"In[69]:=",ExpressionUUID->"164359cc-2d3e-4136-8263-6f42d053fcf5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"getRatio", "[", 
+   RowBox[{"xcountry_", ",", "xyear_", ",", "xstate_"}], "]"}], ":=", 
+  RowBox[{"N", "@", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"IntegerPart", "@", 
+       RowBox[{"(", 
+        RowBox[{"QuantityMagnitude", "[", 
+         RowBox[{
+          RowBox[{"CountryData", "[", 
+           RowBox[{"xcountry", ",", "\"\<Population\>\""}], "]"}], "*", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"GetPrevalence", "[", 
+             RowBox[{"xcountry", ",", "xyear"}], "]"}], "/", "100"}], ")"}]}],
+          "]"}], ")"}]}], ")"}], "/", 
+     RowBox[{"getpop", "[", "xstate", "]"}]}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.8583884501593585`*^9, 3.8583885423266993`*^9}, {
+  3.858388763078189*^9, 3.8583887775255156`*^9}},
+ CellLabel->"In[51]:=",ExpressionUUID->"d987044e-07bc-48e1-8a2b-88dc5a6555b3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GetCountryHungerPop", "[", 
+  RowBox[{"\"\<Angola\>\"", ",", "2008"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8583885449188776`*^9, 3.858388563846589*^9}, {
+  3.8583888522257986`*^9, 3.858388857464455*^9}},
+ CellLabel->"In[58]:=",ExpressionUUID->"bed025f4-9263-4568-890e-6f5307a60264"],
+
+Cell[BoxData["14132495"], "Output",
+ CellChangeTimes->{
+  3.8583885641887608`*^9, 3.858388783136795*^9, {3.8583888579527645`*^9, 
+   3.8583888774992714`*^9}},
+ CellLabel->"Out[58]=",ExpressionUUID->"1a257ed2-e0c6-437c-8b89-eb283cc01b9a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"form1", "=", 
+  RowBox[{"FormFunction", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\"\<countryselect\>\"", ",", "\"\<Country\>\""}], "}"}], 
+       "\[Rule]", "listcountries"}], ",", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\"\<yearselect\>\"", ",", "\"\<Year\>\""}], "}"}], "\[Rule]",
+        "years"}], ",", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\"\<stateselect\>\"", ",", "\"\<Compare with\>\""}], "}"}], 
+       "\[Rule]", "states"}]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"With", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"xratio", "=", 
+         RowBox[{"getRatio", "[", 
+          RowBox[{"#countryselect", ",", "#yearselect", ",", "#stateselect"}],
+           "]"}]}], "}"}], ",", 
+       RowBox[{"Column", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"#countryselect", "<>", "\"\< had \>\"", "<>", 
+             RowBox[{"ToString", "@", 
+              RowBox[{"NumberForm", "[", 
+               RowBox[{
+                RowBox[{"GetCountryHungerPop", "[", 
+                 RowBox[{"#countryselect", ",", "#yearselect"}], "]"}], ",", 
+                RowBox[{"DigitBlock", "\[Rule]", "3"}]}], "]"}]}], "<>", 
+             "\"\< undernourished people in \>\"", "<>", 
+             RowBox[{"ToString", "@", "#yearselect"}], "<>", 
+             "\"\<. That's \>\"", "<>", 
+             RowBox[{"ToString", "@", "xratio"}], "<>", 
+             "\"\< times the entire population of \>\"", "<>", 
+             "#stateselect"}], ",", "\"\<Subsubsection\>\""}], "]"}], ",", 
+          RowBox[{"printstate", "[", 
+           RowBox[{"#stateselect", ",", "xratio"}], "]"}]}], "}"}], "]"}]}], 
+      "]"}], "&"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.857976494382757*^9, 3.857976501853295*^9}, {
+   3.857976537340561*^9, 3.8579765383005333`*^9}, {3.857976583670971*^9, 
+   3.8579765877190247`*^9}, {3.857976651306065*^9, 3.8579766595931063`*^9}, {
+   3.8579767092880845`*^9, 3.8579767415181284`*^9}, {3.857976851856796*^9, 
+   3.8579768723245487`*^9}, {3.8579769649149923`*^9, 3.857976984614085*^9}, {
+   3.8579771038366036`*^9, 3.857977124538809*^9}, {3.857977293700506*^9, 
+   3.8579773206993685`*^9}, {3.857979135516502*^9, 3.857979172288395*^9}, 
+   3.857979214523192*^9, {3.8579794350403986`*^9, 3.8579794439999866`*^9}, {
+   3.8579817468275676`*^9, 3.8579817631237144`*^9}, {3.8580360819533105`*^9, 
+   3.8580360855571337`*^9}, {3.858167298997185*^9, 3.85816731902991*^9}, {
+   3.8581678284850407`*^9, 3.85816789497052*^9}, {3.8581679318231945`*^9, 
+   3.858167932519334*^9}, 3.8583884714124928`*^9, {3.858388574601003*^9, 
+   3.858388599610329*^9}, {3.8583886330467663`*^9, 3.8583887111775293`*^9}, {
+   3.8583889269807444`*^9, 3.858389168566333*^9}},
+ CellLabel->"In[63]:=",ExpressionUUID->"43166322-c12d-4050-b209-99ae517c0b9e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   TagBox["FormFunction",
+    "SummaryHead"], "[", 
+   TemplateBox[{
+     DynamicModuleBox[{Forms`Format`PackagePrivate`values$$}, 
+      DynamicBox[
+       ToBoxes[
+        If[
+         ValueQ[Forms`Format`PackagePrivate`values$$], 
+         Column[{
+           Panel[
+            Style[
+             (With[{$CellContext`xratio = $CellContext`getRatio[
+                 Slot["countryselect"], 
+                 Slot["yearselect"], 
+                 Slot["stateselect"]]}, 
+              Column[{
+                Style[
+                 StringJoin[
+                  Slot["countryselect"], " had ", 
+                  ToString[
+                   NumberForm[
+                    $CellContext`GetCountryHungerPop[
+                    Slot["countryselect"], 
+                    Slot["yearselect"]], DigitBlock -> 3]], 
+                  " undernourished people in ", 
+                  ToString[
+                   Slot["yearselect"]], ". That's ", 
+                  ToString[$CellContext`xratio], 
+                  " times the entire population of ", 
+                  Slot["stateselect"]], "Subsubsection"], 
+                $CellContext`printstate[
+                 Slot["stateselect"], $CellContext`xratio]}]]& )[
+             Forms`Format`PackagePrivate`values$$], "Output", "StandardForm"],
+             Background -> White], 
+           Item[
+            Row[{
+              Spacer[0], 
+              Forms`Format`PackagePrivate`formCancelButton["Back", 
+               Clear[Forms`Format`PackagePrivate`values$$], 
+               FormObject[
+                Association[
+                "countryselect" -> 
+                 Association[
+                  "Interpreter" -> {
+                    "Afghanistan", "Africa Eastern and Southern", 
+                    "Africa Western and Central", "Albania", "Algeria", 
+                    "Angola", "Arab World", "Argentina", "Armenia", 
+                    "Australia", "Austria", "Azerbaijan", "Bangladesh", 
+                    "Barbados", "Belarus", "Belgium", "Belize", "Benin", 
+                    "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil",
+                     "Brunei", "Bulgaria", "Burkina Faso", "Cambodia", 
+                    "Cameroon", "Canada", "Cape Verde", 
+                    "Caribbean Small States", 
+                    "Central Europe and the Baltics", "Chad", "Chile", 
+                    "China", "Colombia", "Congo", "Costa Rica", 
+                    "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czechia", 
+                    "Denmark", "Dominica", "Dominican Republic", 
+                    "Early-demographic dividend", "East Asia & Pacific", 
+                    "East Asia & Pacific (IDA & IBRD)", 
+                    "East Asia & Pacific (excluding high income)", "Ecuador", 
+                    "Egypt", "El Salvador", "Estonia", "Eswatini", "Ethiopia",
+                     "Euro area", "Europe & Central Asia", 
+                    "Europe & Central Asia (IDA & IBRD)", 
+                    "Europe & Central Asia (excluding high income)", 
+                    "European Union", "Fiji", "Finland", 
+                    "Fragile and conflict affected situations", "France", 
+                    "French Polynesia", "Gabon", "Gambia", "Georgia", 
+                    "Germany", "Ghana", "Greece", "Guatemala", "Guyana", 
+                    "Haiti", "Heavily indebted poor countries (HIPC)", 
+                    "High income", "Honduras", "Hong Kong", "Hungary", 
+                    "IBRD only", "IDA & IBRD total", "IDA blend", "IDA only", 
+                    "IDA total", "Iceland", "India", "Indonesia", "Iran", 
+                    "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", 
+                    "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", 
+                    "Kyrgyzstan", "Late-demographic dividend", 
+                    "Latin America & Caribbean", 
+                    "Latin America & Caribbean (IDA & IBRD)", 
+                    "Latin America & Caribbean (excluding high income)", 
+                    "Latvia", "Least developed countries: UN classification", 
+                    "Lebanon", "Lesotho", "Liberia", "Lithuania", 
+                    "Low & middle income", "Lower middle income", 
+                    "Luxembourg", "Macao", "Madagascar", "Malawi", "Malaysia",
+                     "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", 
+                    "Middle East & North Africa", 
+                    "Middle East & North Africa (IDA & IBRD)", 
+                    "Middle East & North Africa (excluding high income)", 
+                    "Middle income", "Mongolia", "Montenegro", "Morocco", 
+                    "Mozambique", "Myanmar", "Namibia", "Nepal", 
+                    "Netherlands", "New Caledonia", "New Zealand", 
+                    "Nicaragua", "Nigeria", "North America", "North Korea", 
+                    "North Macedonia", "Norway", "OECD members", "Oman", 
+                    "Other small states", "Pacific island small states", 
+                    "Pakistan", "Panama", "Paraguay", "Peru", "Philippines", 
+                    "Poland", "Portugal", "Post-demographic dividend", 
+                    "Pre-demographic dividend", "Romania", "Russia", "Rwanda",
+                     "Saint Vincent and the Grenadines", "Samoa", 
+                    "Sao Tome and Principe", "Saudi Arabia", "Senegal", 
+                    "Serbia", "Sierra Leone", "Slovakia", "Slovenia", 
+                    "Small states", "Solomon Islands", "South Africa", 
+                    "South Asia", "South Asia (IDA & IBRD)", "South Korea", 
+                    "Spain", "Sri Lanka", "Sub-Saharan Africa", 
+                    "Sub-Saharan Africa (IDA & IBRD)", 
+                    "Sub-Saharan Africa (excluding high income)", "Sudan", 
+                    "Suriname", "Sweden", "Switzerland", "Tanzania", 
+                    "Thailand", "Timor", "Togo", "Trinidad and Tobago", 
+                    "Tunisia", "Turkey", "Turkmenistan", "Ukraine", 
+                    "United Arab Emirates", "United Kingdom", "United States",
+                     "Upper middle income", "Uruguay", "Uzbekistan", 
+                    "Vanuatu", "Venezuela", "Vietnam", "World"}, "Label" -> 
+                   "Country"], "yearselect" -> 
+                 Association[
+                  "Interpreter" -> {
+                    "2001", "2002", "2003", "2004", "2005", "2006", "2007", 
+                    "2008", "2009", "2010", "2011", "2012", "2013", "2014", 
+                    "2015", "2016", "2017", "2018"}, "Label" -> "Year"], 
+                 "stateselect" -> 
+                 Association[
+                  "Interpreter" -> {
+                    "California", "Colorado", "Florida", "Maryland", "Ohio", 
+                    "Oregon", "Rhode Island", "Texas", "Virginia", "Wyoming"},
+                    "Label" -> "Compare with"]]][
+               AppearanceRules, "FormCancelButtonStyle"]]}], Alignment -> 
+            Right]}, Alignment -> Right], 
+         Forms`Format`PackagePrivate`values$$; Forms`PackageScope`bindForm[
+           Forms`PackageScope`changeAppearanceRule[
+            FormObject[
+             Association[
+             "countryselect" -> 
+              Association[
+               "Interpreter" -> {
+                 "Afghanistan", "Africa Eastern and Southern", 
+                  "Africa Western and Central", "Albania", "Algeria", 
+                  "Angola", "Arab World", "Argentina", "Armenia", "Australia",
+                   "Austria", "Azerbaijan", "Bangladesh", "Barbados", 
+                  "Belarus", "Belgium", "Belize", "Benin", "Bolivia", 
+                  "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", 
+                  "Bulgaria", "Burkina Faso", "Cambodia", "Cameroon", 
+                  "Canada", "Cape Verde", "Caribbean Small States", 
+                  "Central Europe and the Baltics", "Chad", "Chile", "China", 
+                  "Colombia", "Congo", "Costa Rica", "Cote d'Ivoire", 
+                  "Croatia", "Cuba", "Cyprus", "Czechia", "Denmark", 
+                  "Dominica", "Dominican Republic", 
+                  "Early-demographic dividend", "East Asia & Pacific", 
+                  "East Asia & Pacific (IDA & IBRD)", 
+                  "East Asia & Pacific (excluding high income)", "Ecuador", 
+                  "Egypt", "El Salvador", "Estonia", "Eswatini", "Ethiopia", 
+                  "Euro area", "Europe & Central Asia", 
+                  "Europe & Central Asia (IDA & IBRD)", 
+                  "Europe & Central Asia (excluding high income)", 
+                  "European Union", "Fiji", "Finland", 
+                  "Fragile and conflict affected situations", "France", 
+                  "French Polynesia", "Gabon", "Gambia", "Georgia", "Germany",
+                   "Ghana", "Greece", "Guatemala", "Guyana", "Haiti", 
+                  "Heavily indebted poor countries (HIPC)", "High income", 
+                  "Honduras", "Hong Kong", "Hungary", "IBRD only", 
+                  "IDA & IBRD total", "IDA blend", "IDA only", "IDA total", 
+                  "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", 
+                  "Israel", "Italy", "Jamaica", "Japan", "Jordan", 
+                  "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", 
+                  "Late-demographic dividend", "Latin America & Caribbean", 
+                  "Latin America & Caribbean (IDA & IBRD)", 
+                  "Latin America & Caribbean (excluding high income)", 
+                  "Latvia", "Least developed countries: UN classification", 
+                  "Lebanon", "Lesotho", "Liberia", "Lithuania", 
+                  "Low & middle income", "Lower middle income", "Luxembourg", 
+                  "Macao", "Madagascar", "Malawi", "Malaysia", "Mali", 
+                  "Malta", "Mauritania", "Mauritius", "Mexico", 
+                  "Middle East & North Africa", 
+                  "Middle East & North Africa (IDA & IBRD)", 
+                  "Middle East & North Africa (excluding high income)", 
+                  "Middle income", "Mongolia", "Montenegro", "Morocco", 
+                  "Mozambique", "Myanmar", "Namibia", "Nepal", "Netherlands", 
+                  "New Caledonia", "New Zealand", "Nicaragua", "Nigeria", 
+                  "North America", "North Korea", "North Macedonia", "Norway",
+                   "OECD members", "Oman", "Other small states", 
+                  "Pacific island small states", "Pakistan", "Panama", 
+                  "Paraguay", "Peru", "Philippines", "Poland", "Portugal", 
+                  "Post-demographic dividend", "Pre-demographic dividend", 
+                  "Romania", "Russia", "Rwanda", 
+                  "Saint Vincent and the Grenadines", "Samoa", 
+                  "Sao Tome and Principe", "Saudi Arabia", "Senegal", 
+                  "Serbia", "Sierra Leone", "Slovakia", "Slovenia", 
+                  "Small states", "Solomon Islands", "South Africa", 
+                  "South Asia", "South Asia (IDA & IBRD)", "South Korea", 
+                  "Spain", "Sri Lanka", "Sub-Saharan Africa", 
+                  "Sub-Saharan Africa (IDA & IBRD)", 
+                  "Sub-Saharan Africa (excluding high income)", "Sudan", 
+                  "Suriname", "Sweden", "Switzerland", "Tanzania", "Thailand",
+                   "Timor", "Togo", "Trinidad and Tobago", "Tunisia", 
+                  "Turkey", "Turkmenistan", "Ukraine", "United Arab Emirates",
+                   "United Kingdom", "United States", "Upper middle income", 
+                  "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", 
+                  "World"}, "Label" -> "Country"], "yearselect" -> 
+              Association[
+               "Interpreter" -> {
+                 "2001", "2002", "2003", "2004", "2005", "2006", "2007", 
+                  "2008", "2009", "2010", "2011", "2012", "2013", "2014", 
+                  "2015", "2016", "2017", "2018"}, "Label" -> "Year"], 
+              "stateselect" -> 
+              Association[
+               "Interpreter" -> {
+                 "California", "Colorado", "Florida", "Maryland", "Ohio", 
+                  "Oregon", "Rhode Island", "Texas", "Virginia", "Wyoming"}, 
+                "Label" -> "Compare with"]]], "CancelLabel" -> None], 
+           Forms`Format`PackagePrivate`values$$]], StandardForm], 
+       ImageSizeCache -> {384., {90.65869140625, 96.34130859375}}, 
+       TrackedSymbols :> {Forms`Format`PackagePrivate`values$$}], 
+      DynamicModuleValues :> {}]},
+    "FormPanel"], "]"}],
+  FormFunction[
+   FormObject[
+    Association[
+    "countryselect" -> 
+     Association[
+      "Interpreter" -> {
+        "Afghanistan", "Africa Eastern and Southern", 
+         "Africa Western and Central", "Albania", "Algeria", "Angola", 
+         "Arab World", "Argentina", "Armenia", "Australia", "Austria", 
+         "Azerbaijan", "Bangladesh", "Barbados", "Belarus", "Belgium", 
+         "Belize", "Benin", "Bolivia", "Bosnia and Herzegovina", "Botswana", 
+         "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Cambodia", 
+         "Cameroon", "Canada", "Cape Verde", "Caribbean Small States", 
+         "Central Europe and the Baltics", "Chad", "Chile", "China", 
+         "Colombia", "Congo", "Costa Rica", "Cote d'Ivoire", "Croatia", 
+         "Cuba", "Cyprus", "Czechia", "Denmark", "Dominica", 
+         "Dominican Republic", "Early-demographic dividend", 
+         "East Asia & Pacific", "East Asia & Pacific (IDA & IBRD)", 
+         "East Asia & Pacific (excluding high income)", "Ecuador", "Egypt", 
+         "El Salvador", "Estonia", "Eswatini", "Ethiopia", "Euro area", 
+         "Europe & Central Asia", "Europe & Central Asia (IDA & IBRD)", 
+         "Europe & Central Asia (excluding high income)", "European Union", 
+         "Fiji", "Finland", "Fragile and conflict affected situations", 
+         "France", "French Polynesia", "Gabon", "Gambia", "Georgia", 
+         "Germany", "Ghana", "Greece", "Guatemala", "Guyana", "Haiti", 
+         "Heavily indebted poor countries (HIPC)", "High income", "Honduras", 
+         "Hong Kong", "Hungary", "IBRD only", "IDA & IBRD total", "IDA blend",
+          "IDA only", "IDA total", "Iceland", "India", "Indonesia", "Iran", 
+         "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", 
+         "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", 
+         "Late-demographic dividend", "Latin America & Caribbean", 
+         "Latin America & Caribbean (IDA & IBRD)", 
+         "Latin America & Caribbean (excluding high income)", "Latvia", 
+         "Least developed countries: UN classification", "Lebanon", "Lesotho",
+          "Liberia", "Lithuania", "Low & middle income", 
+         "Lower middle income", "Luxembourg", "Macao", "Madagascar", "Malawi",
+          "Malaysia", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", 
+         "Middle East & North Africa", 
+         "Middle East & North Africa (IDA & IBRD)", 
+         "Middle East & North Africa (excluding high income)", 
+         "Middle income", "Mongolia", "Montenegro", "Morocco", "Mozambique", 
+         "Myanmar", "Namibia", "Nepal", "Netherlands", "New Caledonia", 
+         "New Zealand", "Nicaragua", "Nigeria", "North America", 
+         "North Korea", "North Macedonia", "Norway", "OECD members", "Oman", 
+         "Other small states", "Pacific island small states", "Pakistan", 
+         "Panama", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", 
+         "Post-demographic dividend", "Pre-demographic dividend", "Romania", 
+         "Russia", "Rwanda", "Saint Vincent and the Grenadines", "Samoa", 
+         "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", 
+         "Sierra Leone", "Slovakia", "Slovenia", "Small states", 
+         "Solomon Islands", "South Africa", "South Asia", 
+         "South Asia (IDA & IBRD)", "South Korea", "Spain", "Sri Lanka", 
+         "Sub-Saharan Africa", "Sub-Saharan Africa (IDA & IBRD)", 
+         "Sub-Saharan Africa (excluding high income)", "Sudan", "Suriname", 
+         "Sweden", "Switzerland", "Tanzania", "Thailand", "Timor", "Togo", 
+         "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", 
+         "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
+          "Upper middle income", "Uruguay", "Uzbekistan", "Vanuatu", 
+         "Venezuela", "Vietnam", "World"}, "Label" -> "Country"], 
+     "yearselect" -> 
+     Association[
+      "Interpreter" -> {
+        "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", 
+         "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", 
+         "2017", "2018"}, "Label" -> "Year"], "stateselect" -> 
+     Association[
+      "Interpreter" -> {
+        "California", "Colorado", "Florida", "Maryland", "Ohio", "Oregon", 
+         "Rhode Island", "Texas", "Virginia", "Wyoming"}, "Label" -> 
+       "Compare with"]]], With[{$CellContext`xratio = $CellContext`getRatio[
+       Slot["countryselect"], 
+       Slot["yearselect"], 
+       Slot["stateselect"]]}, 
+    Column[{
+      Style[
+       StringJoin[
+        Slot["countryselect"], " had ", 
+        ToString[
+         NumberForm[
+          $CellContext`GetCountryHungerPop[
+           Slot["countryselect"], 
+           Slot["yearselect"]], DigitBlock -> 3]], 
+        " undernourished people in ", 
+        ToString[
+         Slot["yearselect"]], ". That's ", 
+        ToString[$CellContext`xratio], " times the entire population of ", 
+        Slot["stateselect"]], "Subsubsection"], 
+      $CellContext`printstate[
+       Slot["stateselect"], $CellContext`xratio]}]]& ],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.85797732125941*^9, 3.8579791725761456`*^9, 3.857979444481259*^9, {
+   3.8579809832449484`*^9, 3.8579810092707925`*^9}, {3.857981764706278*^9, 
+   3.857981778988134*^9}, 3.8580359569304028`*^9, 3.8581673223998384`*^9, 
+   3.8581678996701517`*^9, 3.8581679343603373`*^9, 3.8583886044413357`*^9, 
+   3.858389097737849*^9, {3.8583891507543836`*^9, 3.858389170375227*^9}, {
+   3.858389218604076*^9, 3.8583892362019267`*^9}},
+ CellLabel->"Out[63]=",ExpressionUUID->"8a76b5af-957b-4186-96ed-4d2f5e44a6ab"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", 
+  RowBox[{"form1", ",", 
+   RowBox[{"Permissions", "\[Rule]", "\"\<Public\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.858389523838646*^9, 3.8583895301446524`*^9}},
+ CellLabel->"In[72]:=",ExpressionUUID->"766bc14f-483e-409e-9bf6-ce13146a8dec"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TemplateBox[{
+    "\"https://www.wolframcloud.com/obj/55fd1578-ab6b-4d84-85d8-2ee01049e020\"\
+", "https://www.wolframcloud.com/obj/55fd1578-ab6b-4d84-85d8-2ee01049e020"},
+    "HyperlinkURL"], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/obj/55fd1578-ab6b-4d84-85d8-2ee01049e020"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.8583895327595577`*^9},
+ CellLabel->"Out[72]=",ExpressionUUID->"3ddc67b7-ba35-4e96-86a0-ca3189658a53"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"database", "[", 
+   RowBox[{
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"#country", "===", "\"\<Afghanistan\>\""}], "&"}], "]"}], ",", 
+    "\"\<prevalence\>\""}], "]"}], "//", "Normal"}]], "Input",
+ CellChangeTimes->{{3.8579812713556967`*^9, 3.857981302379692*^9}, {
+  3.8579815562511473`*^9, 3.8579815745514946`*^9}},
+ CellLabel->"In[89]:=",ExpressionUUID->"3203385d-4dc9-48fb-8729-e215bcde13fe"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "47.8`", ",", "45.7`", ",", "40.7`", ",", "38.1`", ",", "36.2`", ",", 
+   "33.5`", ",", "30", ",", "26.4`", ",", "24.9`", ",", "24.1`", ",", "25", 
+   ",", "27.2`", ",", "26.5`", ",", "26.4`", ",", "25.8`", ",", "27.5`", ",", 
+   "28.9`", ",", "29.9`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.8579812767955265`*^9, 3.857981297280059*^9}, {
+  3.857981544272545*^9, 3.8579815750491047`*^9}},
+ CellLabel->"Out[89]=",ExpressionUUID->"a8f745cc-b96e-4afc-830e-c9fbbf3523da"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"getpop", "[", "state_", "]"}], ":=", 
+  RowBox[{"IntegerPart", "@", 
+   RowBox[{"QuantityMagnitude", "@", 
+    RowBox[{"EntityValue", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Interpreter", "[", "\"\<AdministrativeDivision\>\"", "]"}], 
+       "[", "state", "]"}], ",", "\"\<Population\>\""}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.8581675484922657`*^9, 3.8581675500678687`*^9}, {
+  3.858167583154684*^9, 3.85816760255464*^9}, {3.858167740153336*^9, 
+  3.8581677884524903`*^9}},
+ CellLabel->"In[46]:=",ExpressionUUID->"dbf720ff-58ba-4b1c-9790-524893cbbe47"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"getpop", "[", "\"\<Wyoming\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.8581677930437984`*^9, 3.8581678163515854`*^9}},
+ CellLabel->
+  "In[114]:=",ExpressionUUID->"0f51192d-ff1c-4699-b36d-c0b184374aa7"],
+
+Cell[BoxData["577719"], "Output",
+ CellChangeTimes->{{3.858167802891234*^9, 3.8581678192993813`*^9}},
+ CellLabel->
+  "Out[114]=",ExpressionUUID->"6e6c2776-77bd-4057-a383-592e730d883b"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"countrylist", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Afghanistan\>\"", ",", "\"\<Albania\>\"", ",", "\"\<Algeria\>\"", 
+     ",", "\"\<Andorra\>\"", ",", "\"\<Angola\>\"", ",", "\"\<Anguilla\>\"", 
+     ",", "\"\<Antigua &amp; Barbuda\>\"", ",", "\"\<Argentina\>\"", ",", 
+     "\"\<Armenia\>\"", ",", "\"\<Aruba\>\"", ",", "\"\<Australia\>\"", ",", 
+     "\"\<Austria\>\"", ",", "\"\<Azerbaijan\>\"", ",", "\"\<Bahamas\>\"", 
+     ",", "\"\<Bahrain\>\"", ",", "\"\<Bangladesh\>\"", ",", 
+     "\"\<Barbados\>\"", ",", "\"\<Belarus\>\"", ",", "\"\<Belgium\>\"", ",", 
+     "\"\<Belize\>\"", ",", "\"\<Benin\>\"", ",", "\"\<Bermuda\>\"", ",", 
+     "\"\<Bhutan\>\"", ",", "\"\<Bolivia\>\"", ",", 
+     "\"\<Bosnia &amp; Herzegovina\>\"", ",", "\"\<Botswana\>\"", ",", 
+     "\"\<Brazil\>\"", ",", "\"\<British Virgin Islands\>\"", ",", 
+     "\"\<Brunei\>\"", ",", "\"\<Bulgaria\>\"", ",", "\"\<Burkina Faso\>\"", 
+     ",", "\"\<Burundi\>\"", ",", "\"\<Cambodia\>\"", ",", "\"\<Cameroon\>\"",
+      ",", "\"\<Cape Verde\>\"", ",", "\"\<Cayman Islands\>\"", ",", 
+     "\"\<Chad\>\"", ",", "\"\<Chile\>\"", ",", "\"\<China\>\"", ",", 
+     "\"\<Colombia\>\"", ",", "\"\<Congo\>\"", ",", "\"\<Cook Islands\>\"", 
+     ",", "\"\<Costa Rica\>\"", ",", "\"\<Cote D Ivoire\>\"", ",", 
+     "\"\<Croatia\>\"", ",", "\"\<Cruise Ship\>\"", ",", "\"\<Cuba\>\"", ",", 
+     "\"\<Cyprus\>\"", ",", "\"\<Czech Republic\>\"", ",", "\"\<Denmark\>\"", 
+     ",", "\"\<Djibouti\>\"", ",", "\"\<Dominica\>\"", ",", 
+     "\"\<Dominican Republic\>\"", ",", "\"\<Ecuador\>\"", ",", 
+     "\"\<Egypt\>\"", ",", "\"\<El Salvador\>\"", ",", 
+     "\"\<Equatorial Guinea\>\"", ",", "\"\<Estonia\>\"", ",", 
+     "\"\<Ethiopia\>\"", ",", "\"\<Falkland Islands\>\"", ",", 
+     "\"\<Faroe Islands\>\"", ",", "\"\<Fiji\>\"", ",", "\"\<Finland\>\"", 
+     ",", "\"\<France\>\"", ",", "\"\<French Polynesia\>\"", ",", 
+     "\"\<French West Indies\>\"", ",", "\"\<Gabon\>\"", ",", 
+     "\"\<Gambia\>\"", ",", "\"\<Georgia\>\"", ",", "\"\<Germany\>\"", ",", 
+     "\"\<Ghana\>\"", ",", "\"\<Gibraltar\>\"", ",", "\"\<Greece\>\"", ",", 
+     "\"\<Greenland\>\"", ",", "\"\<Grenada\>\"", ",", "\"\<Guam\>\"", ",", 
+     "\"\<Guatemala\>\"", ",", "\"\<Guernsey\>\"", ",", "\"\<Guinea\>\"", 
+     ",", "\"\<Guinea Bissau\>\"", ",", "\"\<Guyana\>\"", ",", 
+     "\"\<Haiti\>\"", ",", "\"\<Honduras\>\"", ",", "\"\<Hong Kong\>\"", ",", 
+     "\"\<Hungary\>\"", ",", "\"\<Iceland\>\"", ",", "\"\<India\>\"", ",", 
+     "\"\<Indonesia\>\"", ",", "\"\<Iran\>\"", ",", "\"\<Iraq\>\"", ",", 
+     "\"\<Ireland\>\"", ",", "\"\<Isle of Man\>\"", ",", "\"\<Israel\>\"", 
+     ",", "\"\<Italy\>\"", ",", "\"\<Jamaica\>\"", ",", "\"\<Japan\>\"", ",", 
+     "\"\<Jersey\>\"", ",", "\"\<Jordan\>\"", ",", "\"\<Kazakhstan\>\"", ",", 
+     "\"\<Kenya\>\"", ",", "\"\<Kuwait\>\"", ",", "\"\<Kyrgyz Republic\>\"", 
+     ",", "\"\<Laos\>\"", ",", "\"\<Latvia\>\"", ",", "\"\<Lebanon\>\"", ",", 
+     "\"\<Lesotho\>\"", ",", "\"\<Liberia\>\"", ",", "\"\<Libya\>\"", ",", 
+     "\"\<Liechtenstein\>\"", ",", "\"\<Lithuania\>\"", ",", 
+     "\"\<Luxembourg\>\"", ",", "\"\<Macau\>\"", ",", "\"\<Macedonia\>\"", 
+     ",", "\"\<Madagascar\>\"", ",", "\"\<Malawi\>\"", ",", 
+     "\"\<Malaysia\>\"", ",", "\"\<Maldives\>\"", ",", "\"\<Mali\>\"", ",", 
+     "\"\<Malta\>\"", ",", "\"\<Mauritania\>\"", ",", "\"\<Mauritius\>\"", 
+     ",", "\"\<Mexico\>\"", ",", "\"\<Moldova\>\"", ",", "\"\<Monaco\>\"", 
+     ",", "\"\<Mongolia\>\"", ",", "\"\<Montenegro\>\"", ",", 
+     "\"\<Montserrat\>\"", ",", "\"\<Morocco\>\"", ",", "\"\<Mozambique\>\"", 
+     ",", "\"\<Namibia\>\"", ",", "\"\<Nepal\>\"", ",", "\"\<Netherlands\>\"",
+      ",", "\"\<Netherlands Antilles\>\"", ",", "\"\<New Caledonia\>\"", ",", 
+     "\"\<New Zealand\>\"", ",", "\"\<Nicaragua\>\"", ",", "\"\<Niger\>\"", 
+     ",", "\"\<Nigeria\>\"", ",", "\"\<Norway\>\"", ",", "\"\<Oman\>\"", ",", 
+     "\"\<Pakistan\>\"", ",", "\"\<Palestine\>\"", ",", "\"\<Panama\>\"", 
+     ",", "\"\<Papua New Guinea\>\"", ",", "\"\<Paraguay\>\"", ",", 
+     "\"\<Peru\>\"", ",", "\"\<Philippines\>\"", ",", "\"\<Poland\>\"", ",", 
+     "\"\<Portugal\>\"", ",", "\"\<Puerto Rico\>\"", ",", "\"\<Qatar\>\"", 
+     ",", "\"\<Reunion\>\"", ",", "\"\<Romania\>\"", ",", "\"\<Russia\>\"", 
+     ",", "\"\<Rwanda\>\"", ",", "\"\<Saint Pierre &amp; Miquelon\>\"", ",", 
+     "\"\<Samoa\>\"", ",", "\"\<San Marino\>\"", ",", "\"\<Satellite\>\"", 
+     ",", "\"\<Saudi Arabia\>\"", ",", "\"\<Senegal\>\"", ",", 
+     "\"\<Serbia\>\"", ",", "\"\<Seychelles\>\"", ",", "\"\<Sierra Leone\>\"",
+      ",", "\"\<Singapore\>\"", ",", "\"\<Slovakia\>\"", ",", 
+     "\"\<Slovenia\>\"", ",", "\"\<South Africa\>\"", ",", 
+     "\"\<South Korea\>\"", ",", "\"\<Spain\>\"", ",", "\"\<Sri Lanka\>\"", 
+     ",", "\"\<St Kitts &amp; Nevis\>\"", ",", "\"\<St Lucia\>\"", ",", 
+     "\"\<St Vincent\>\"", ",", "\"\<St. Lucia\>\"", ",", "\"\<Sudan\>\"", 
+     ",", "\"\<Suriname\>\"", ",", "\"\<Swaziland\>\"", ",", "\"\<Sweden\>\"",
+      ",", "\"\<Switzerland\>\"", ",", "\"\<Syria\>\"", ",", "\"\<Taiwan\>\"",
+      ",", "\"\<Tajikistan\>\"", ",", "\"\<Tanzania\>\"", ",", 
+     "\"\<Thailand\>\"", ",", "\"\<Timor L'Este\>\"", ",", "\"\<Togo\>\"", 
+     ",", "\"\<Tonga\>\"", ",", "\"\<Trinidad &amp; Tobago\>\"", ",", 
+     "\"\<Tunisia\>\"", ",", "\"\<Turkey\>\"", ",", "\"\<Turkmenistan\>\"", 
+     ",", "\"\<Turks &amp; Caicos\>\"", ",", "\"\<Uganda\>\"", ",", 
+     "\"\<Ukraine\>\"", ",", "\"\<United Arab Emirates\>\"", ",", 
+     "\"\<United Kingdom\>\"", ",", "\"\<Uruguay\>\"", ",", 
+     "\"\<Uzbekistan\>\"", ",", "\"\<Venezuela\>\"", ",", "\"\<Vietnam\>\"", 
+     ",", "\"\<Virgin Islands (US)\>\"", ",", "\"\<Yemen\>\"", ",", 
+     "\"\<Zambia\>\"", ",", "\"\<Zimbabwe\>\""}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.858389344980036*^9, 3.85838934822601*^9}, {
+  3.8583894210511713`*^9, 3.8583894301005573`*^9}},
+ CellLabel->"In[66]:=",ExpressionUUID->"51f0b40f-bd4b-4ccb-8019-0ae96a791ba1"]
+},
+WindowSize->{1904, 989},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+TaggingRules->Association["TryRealOnly" -> False],
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (May 13, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"43eea491-ece9-4295-a5c4-cf81c35b4498"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[561, 20, 2994, 71, 310, "Input",ExpressionUUID->"e9ae5a92-1f5d-4dfc-8028-c069f31bc842"],
+Cell[3558, 93, 573, 12, 29, "Input",ExpressionUUID->"6113ba8c-da82-4425-b454-284bdd480f8e"],
+Cell[4134, 107, 724, 15, 84, "Input",ExpressionUUID->"7b0cd337-2110-4a0b-a8ed-c3cf4e9eada3"],
+Cell[4861, 124, 685, 15, 29, "Input",ExpressionUUID->"2f0231bf-e64d-4eb5-89a0-d557f55ba283"],
+Cell[5549, 141, 656, 13, 29, "Input",ExpressionUUID->"c18e60a7-690a-45c9-9d30-7e1d1ec4db26"],
+Cell[6208, 156, 320, 7, 29, "Input",ExpressionUUID->"df33f36b-bdcb-4ba0-be47-15dcc7ea3653"],
+Cell[6531, 165, 821, 22, 29, "Input",ExpressionUUID->"4f4990bc-2009-45d3-8255-3327d992582f"],
+Cell[7355, 189, 713, 17, 29, "Input",ExpressionUUID->"164359cc-2d3e-4136-8263-6f42d053fcf5"],
+Cell[8071, 208, 894, 22, 29, "Input",ExpressionUUID->"d987044e-07bc-48e1-8a2b-88dc5a6555b3"],
+Cell[CellGroupData[{
+Cell[8990, 234, 309, 5, 29, "Input",ExpressionUUID->"bed025f4-9263-4568-890e-6f5307a60264"],
+Cell[9302, 241, 237, 4, 33, "Output",ExpressionUUID->"1a257ed2-e0c6-437c-8b89-eb283cc01b9a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9576, 250, 2947, 61, 90, "Input",ExpressionUUID->"43166322-c12d-4050-b209-99ae517c0b9e"],
+Cell[12526, 313, 18289, 311, 269, "Output",ExpressionUUID->"8a76b5af-957b-4186-96ed-4d2f5e44a6ab"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30852, 629, 291, 5, 29, "Input",ExpressionUUID->"766bc14f-483e-409e-9bf6-ce13146a8dec"],
+Cell[31146, 636, 520, 11, 36, "Output",ExpressionUUID->"3ddc67b7-ba35-4e96-86a0-ca3189658a53"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31703, 652, 446, 10, 29, "Input",ExpressionUUID->"3203385d-4dc9-48fb-8729-e215bcde13fe"],
+Cell[32152, 664, 512, 9, 33, "Output",ExpressionUUID->"a8f745cc-b96e-4afc-830e-c9fbbf3523da"]
+}, Open  ]],
+Cell[32679, 676, 608, 13, 29, "Input",ExpressionUUID->"dbf720ff-58ba-4b1c-9790-524893cbbe47"],
+Cell[CellGroupData[{
+Cell[33312, 693, 226, 4, 29, "Input",ExpressionUUID->"0f51192d-ff1c-4699-b36d-c0b184374aa7"],
+Cell[33541, 699, 184, 3, 33, "Output",ExpressionUUID->"6e6c2776-77bd-4057-a383-592e730d883b"]
+}, Open  ]],
+Cell[33740, 705, 6027, 86, 250, "Input",ExpressionUUID->"51f0b40f-bd4b-4ccb-8019-0ae96a791ba1"]
+}
+]
+*)
+
